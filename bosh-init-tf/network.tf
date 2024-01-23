@@ -11,13 +11,12 @@ resource "openstack_networking_subnet_v2" "bosh_subnet" {
   cidr             = "10.0.1.0/24"
   ip_version       = 4
   name             = "bosh_sub"
-  allocation_pools = {
+  gateway_ip       = "10.0.1.1"
+  enable_dhcp      = "true"
+  allocation_pool {
     start = "10.0.1.200"
     end   = "10.0.1.254"
   }
-  gateway_ip       = "10.0.1.1"
-  enable_dhcp      = "true"
-  dns_nameservers  = "${var.dns_nameservers}"
 }
 
 # router
