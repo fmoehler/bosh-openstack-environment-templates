@@ -3,14 +3,14 @@
 # key pairs
 resource "openstack_compute_keypair_v2" "bosh" {
   region     = "${var.region_name}"
-  name       = "bosh${var.keypair_suffix}"
-  public_key = "${replace("${file("bosh.pub")}","\n","")}"
+  name       = "bosh-test${var.keypair_suffix}"
+  public_key = "${replace("${file("bost-test.pub")}","\n","")}"
 }
 
 # security group
 resource "openstack_networking_secgroup_v2" "secgroup" {
   region = "${var.region_name}"
-  name = "bosh${var.security_group_suffix}"
+  name = "bosh-test${var.security_group_suffix}"
   description = "BOSH Security Group"
 }
 
