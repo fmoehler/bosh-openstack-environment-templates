@@ -10,12 +10,12 @@ red() {
 }
 
 # abort if a key pair already exists
-[[ -e "bosh.pem"     ]] && red "Found key. Aborting!" && exit 1
-[[ -e "bosh.pub" ]] && red "Found key. Aborting!" && exit 1
+[[ -e "bost-test.pem"     ]] && red "Found key. Aborting!" && exit 1
+[[ -e "bost-test.pub" ]] && red "Found key. Aborting!" && exit 1
 
 # create new key pair
-ssh-keygen -t rsa -b 4096 -C "bosh" -N "" -f "bosh.pem"
-mv bosh.pem.pub bosh.pub
+ssh-keygen -t rsa -b 4096 -C "bosh" -N "" -f "bost-test.pem"
+mv bost-test.pem.pub bost-test.pub
 
 # finally inform user about successful completion
 green "Key pair created successfully."

@@ -1,7 +1,7 @@
 # networks
 resource "openstack_networking_network_v2" "bosh" {
   region         = "${var.region_name}"
-  name           = "bosh"
+  name           = "bosh-test"
   admin_state_up = "true"
 }
 
@@ -10,7 +10,7 @@ resource "openstack_networking_subnet_v2" "bosh_subnet" {
   network_id       = "${openstack_networking_network_v2.bosh.id}"
   cidr             = "10.0.1.0/24"
   ip_version       = 4
-  name             = "bosh_sub"
+  name             = "bosh-test_sub"
   gateway_ip       = "10.0.1.1"
   enable_dhcp      = "true"
   allocation_pool {
@@ -23,7 +23,7 @@ resource "openstack_networking_subnet_v2" "bosh_subnet" {
 
 resource "openstack_networking_router_v2" "bosh_router" {
   region           = "${var.region_name}"
-  name             = "bosh-router"
+  name             = "bosh-test-router"
   admin_state_up   = "true"
   external_network_id = "${var.ext_net_id}"
 }
